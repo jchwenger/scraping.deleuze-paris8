@@ -1,6 +1,7 @@
 import os
 import bs4
 import sys
+import ftfy
 import regex
 import pprint
 import urllib3
@@ -115,7 +116,7 @@ def main():
             outname = os.path.join(out_dir, outname)
             print(f"- {title}-{subtitle}.txt")
             with open(outname, "w") as o:
-                o.write(plain_text_article)
+                o.write(ftfy.fix_text(plain_text_article.strip()))
 
     print_separator()
     underprint(f"found {len(all_articles)} article pages.")
