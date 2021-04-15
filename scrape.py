@@ -126,9 +126,9 @@ def get_soup(url, http):
     return BeautifulSoup(r.data, "html.parser")
 
 
-def get_page(url, http):
-    r = http.request("GET", url)
-    return r.data
+# https://stackoverflow.com/a/47593556
+def filter_out_titles(tag, name):
+    return tag is not None and not tag.name != name
 
 
 def underprint(x):
